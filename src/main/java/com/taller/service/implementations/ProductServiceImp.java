@@ -19,6 +19,15 @@ public class ProductServiceImp implements ProductService {
 	
 	@Override
 	public Product save(Product prod) {
+		
+		if(prod.getSellstartdate().after(prod.getSellenddate()) ||
+				prod.getDaystomanufacture() == 0 ||
+				prod.getProductsubcategory() == null ||
+				prod.getProductsubcategory().getProductcategory() == null ||
+				prod.getUnitmeasure1() == null) {
+			return null;
+		}
+		
 		return pr.save(prod);
 	}
 
