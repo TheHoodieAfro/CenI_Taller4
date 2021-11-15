@@ -23,7 +23,7 @@ private static final long serialVersionUID = 1L;
 
 	private String password;
 	
-	private String type;
+	private String role;
 
 	public Integer getId() {
 		return id;
@@ -50,18 +50,18 @@ private static final long serialVersionUID = 1L;
 	}
 
 	public String getType() {
-		return type;
+		return role;
 	}
 
 	public void setType(String type) {
-		this.type = type;
+		this.role = type;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<SimpleGrantedAuthority> auth = new ArrayList<>();
 		
-		auth.add(new SimpleGrantedAuthority(type));
+		auth.add(new SimpleGrantedAuthority(role));
 		
 		return auth;
 	}
@@ -92,7 +92,7 @@ private static final long serialVersionUID = 1L;
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", type=" + type + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + "]";
 	}
 	
 }

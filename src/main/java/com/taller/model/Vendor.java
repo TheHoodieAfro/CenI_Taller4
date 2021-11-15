@@ -44,10 +44,6 @@ public class Vendor implements Serializable {
 	@OneToMany(mappedBy = "vendor")
 	private List<Productvendor> productvendors;
 
-	// bi-directional many-to-one association to Purchaseorderheader
-	@OneToMany(mappedBy = "vendor")
-	private List<Purchaseorderheader> purchaseorderheaders;
-
 	public Vendor() {
 	}
 
@@ -56,13 +52,6 @@ public class Vendor implements Serializable {
 		productvendor.setVendor(this);
 
 		return productvendor;
-	}
-
-	public Purchaseorderheader addPurchaseorderheader(Purchaseorderheader purchaseorderheader) {
-		getPurchaseorderheaders().add(purchaseorderheader);
-		purchaseorderheader.setVendor(this);
-
-		return purchaseorderheader;
 	}
 
 	public String getAccountnumber() {
@@ -97,10 +86,6 @@ public class Vendor implements Serializable {
 		return this.productvendors;
 	}
 
-	public List<Purchaseorderheader> getPurchaseorderheaders() {
-		return this.purchaseorderheaders;
-	}
-
 	public String getPurchasingwebserviceurl() {
 		return this.purchasingwebserviceurl;
 	}
@@ -110,13 +95,6 @@ public class Vendor implements Serializable {
 		productvendor.setVendor(null);
 
 		return productvendor;
-	}
-
-	public Purchaseorderheader removePurchaseorderheader(Purchaseorderheader purchaseorderheader) {
-		getPurchaseorderheaders().remove(purchaseorderheader);
-		purchaseorderheader.setVendor(null);
-
-		return purchaseorderheader;
 	}
 
 	public void setAccountnumber(String accountnumber) {
@@ -149,10 +127,6 @@ public class Vendor implements Serializable {
 
 	public void setProductvendors(List<Productvendor> productvendors) {
 		this.productvendors = productvendors;
-	}
-
-	public void setPurchaseorderheaders(List<Purchaseorderheader> purchaseorderheaders) {
-		this.purchaseorderheaders = purchaseorderheaders;
 	}
 
 	public void setPurchasingwebserviceurl(String purchasingwebserviceurl) {

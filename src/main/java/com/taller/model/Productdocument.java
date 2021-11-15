@@ -21,12 +21,12 @@ public class Productdocument implements Serializable {
 
 	//bi-directional many-to-one association to Document
 	@ManyToOne
-	@JoinColumn(name="documentnode")
+	@JoinColumn(name="documentnode", insertable = false, updatable = false)
 	private Document document;
 
 	//bi-directional many-to-one association to Product
 	@ManyToOne
-	@JoinColumn(name="productid")
+	@JoinColumn(name="productid", insertable = false, updatable = false)
 	private Product product;
 
 	public Productdocument() {

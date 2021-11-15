@@ -30,10 +30,6 @@ public class Unitmeasure implements Serializable {
 
 	private String name;
 
-	// bi-directional many-to-one association to Billofmaterial
-	@OneToMany(mappedBy = "unitmeasure")
-	private List<Billofmaterial> billofmaterials;
-
 	// bi-directional many-to-one association to Product
 	@OneToMany(mappedBy = "unitmeasure1")
 	private List<Product> products1;
@@ -43,13 +39,6 @@ public class Unitmeasure implements Serializable {
 	private List<Product> products2;
 
 	public Unitmeasure() {
-	}
-
-	public Billofmaterial addBillofmaterial(Billofmaterial billofmaterial) {
-		getBillofmaterials().add(billofmaterial);
-		billofmaterial.setUnitmeasure(this);
-
-		return billofmaterial;
 	}
 
 	public Product addProducts1(Product products1) {
@@ -64,10 +53,6 @@ public class Unitmeasure implements Serializable {
 		products2.setUnitmeasure2(this);
 
 		return products2;
-	}
-
-	public List<Billofmaterial> getBillofmaterials() {
-		return this.billofmaterials;
 	}
 
 	public Timestamp getModifieddate() {
@@ -90,13 +75,6 @@ public class Unitmeasure implements Serializable {
 		return this.unitmeasurecode;
 	}
 
-	public Billofmaterial removeBillofmaterial(Billofmaterial billofmaterial) {
-		getBillofmaterials().remove(billofmaterial);
-		billofmaterial.setUnitmeasure(null);
-
-		return billofmaterial;
-	}
-
 	public Product removeProducts1(Product products1) {
 		getProducts1().remove(products1);
 		products1.setUnitmeasure1(null);
@@ -109,10 +87,6 @@ public class Unitmeasure implements Serializable {
 		products2.setUnitmeasure2(null);
 
 		return products2;
-	}
-
-	public void setBillofmaterials(List<Billofmaterial> billofmaterials) {
-		this.billofmaterials = billofmaterials;
 	}
 
 	public void setModifieddate(Timestamp modifieddate) {

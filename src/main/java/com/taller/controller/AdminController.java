@@ -8,9 +8,14 @@ public class AdminController {
 		
 	}
 	
-	@GetMapping("/index")
-    public String dashboard() {
-        return "index.html";
+	@GetMapping("/products")
+    public String products() {
+        return "products.html";
+    }
+	
+	@GetMapping("/vendors")
+    public String vendors() {
+        return "vendors.html";
     }
 	
 }
