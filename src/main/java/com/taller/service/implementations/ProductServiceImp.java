@@ -3,7 +3,7 @@ package com.taller.service.implementations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.taller.model.prod.Product;
+import com.taller.model.Product;
 import com.taller.repository.interfaces.ProductRepository;
 import com.taller.service.interfaces.ProductService;
 

@@ -23,10 +23,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.taller.boot.Taller1Application;
-import com.taller.model.prod.Product;
-import com.taller.model.prod.Productcategory;
-import com.taller.model.prod.Productsubcategory;
-import com.taller.model.prod.Unitmeasure;
+import com.taller.model.Product;
+import com.taller.model.Productcategory;
+import com.taller.model.Productsubcategory;
+import com.taller.model.Unitmeasure;
 import com.taller.repository.interfaces.ProductRepository;
 import com.taller.repository.interfaces.ProductcategoryRespository;
 import com.taller.repository.interfaces.ProductsubcategoryRespository;
