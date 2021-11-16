@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotBlank;
 
 /**
  * The persistent class for the product database table.
@@ -50,7 +51,8 @@ public class Product implements Serializable {
 	private String name;
 
 	private String productline;
-
+	
+	@NotBlank(groups = {info.class})
 	private String productnumber;
 
 	private Integer reorderpoint;
