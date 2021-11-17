@@ -2,6 +2,9 @@ package com.taller.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -34,16 +37,19 @@ public class Productvendor implements Serializable {
 
 	private Integer onorderqty;
 
+	@Min(value=1)
 	private BigDecimal standardprice;
 
 	private String unitmeasurecode;
 
 	//bi-directional many-to-one association to Vendor
+	@NotNull
 	@ManyToOne
 	@JoinColumn(insertable= false, updatable = false, name="businessentityid")
 	private Vendor vendor;
 	
 	//bi-directional many-to-one association to Vendor
+	@NotNull
 	@ManyToOne
 	@JoinColumn(insertable= false, updatable = false, name="productid")
 	private Product product;

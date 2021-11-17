@@ -2,8 +2,13 @@ package com.taller.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 
 /**
@@ -20,21 +25,26 @@ public class Transactionhistory implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TRANSACTIONHISTORY_TRANSACTIONID_GENERATOR")
 	private Integer transactionid;
 
+	@Min(value = 1)
 	private BigDecimal actualcost;
 
-	private Timestamp modifieddate;
+	@PastOrPresent
+	private LocalDate modifieddate;
 
+	@Min(value = 1)
 	private Integer quantity;
 
 	private Integer referenceorderid;
 
 	private Integer referenceorderlineid;
 
-	private Timestamp transactiondate;
+	@PastOrPresent
+	private LocalDate transactiondate;
 
 	private String transactiontype;
 
 	//bi-directional many-to-one association to Product
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="productid")
 	private Product product;

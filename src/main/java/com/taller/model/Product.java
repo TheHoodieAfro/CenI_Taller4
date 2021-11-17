@@ -3,6 +3,7 @@ package com.taller.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,7 +16,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  * The persistent class for the product database table.
@@ -35,10 +38,11 @@ public class Product implements Serializable {
 	private String class_;
 
 	private String color;
-
+	
+	@Min(value = 1)
 	private Integer daystomanufacture;
 
-	private Timestamp discontinueddate;
+	private LocalDate discontinueddate;
 
 	private String finishedgoodsflag;
 
@@ -46,13 +50,13 @@ public class Product implements Serializable {
 
 	private String makeflag;
 
-	private Timestamp modifieddate;
+	private LocalDate modifieddate;
 
 	private String name;
 
 	private String productline;
 	
-	@NotBlank(groups = {info.class})
+	@NotBlank
 	private String productnumber;
 
 	private Integer reorderpoint;
@@ -61,9 +65,9 @@ public class Product implements Serializable {
 
 	private Integer safetystocklevel;
 
-	private Timestamp sellenddate;
+	private LocalDate sellenddate;
 
-	private Timestamp sellstartdate;
+	private LocalDate sellstartdate;
 
 	private String size;
 
@@ -74,11 +78,13 @@ public class Product implements Serializable {
 	private BigDecimal weight;
 
 	// bi-directional many-to-one association to Productsubcategory
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "productsubcategoryid")
 	private Productsubcategory productsubcategory;
 
 	// bi-directional many-to-one association to Unitmeasure
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "sizeunitmeasurecode")
 	private Unitmeasure unitmeasure1;

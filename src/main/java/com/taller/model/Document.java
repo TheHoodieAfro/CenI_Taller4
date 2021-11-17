@@ -2,6 +2,7 @@ package com.taller.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -11,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Size;
 
 /**
  * The persistent class for the document database table.
@@ -32,13 +35,16 @@ public class Document implements Serializable {
 
 	private String documentsummary;
 
+	@Size(min = 3)
 	private String fileextension;
 
+	@Size(min = 4)
 	private String filename;
 
 	private String folderflag;
 
-	private Timestamp modifieddate;
+	@PastOrPresent
+	private LocalDate modifieddate;
 
 	private Integer owner;
 
