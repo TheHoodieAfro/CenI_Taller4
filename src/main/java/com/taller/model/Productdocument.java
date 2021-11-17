@@ -2,6 +2,7 @@ package com.taller.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import java.sql.Timestamp;
 
@@ -23,11 +24,13 @@ public class Productdocument implements Serializable {
 	private Timestamp modifieddate;
 
 	//bi-directional many-to-one association to Document
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="documentnode", insertable = false, updatable = false)
 	private Document document;
 
 	//bi-directional many-to-one association to Product
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="productid", insertable = false, updatable = false)
 	private Product product;

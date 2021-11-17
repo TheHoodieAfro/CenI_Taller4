@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  * The persistent class for the productsubcategory database table.
@@ -30,6 +32,7 @@ public class Productsubcategory implements Serializable {
 
 	private Timestamp modifieddate;
 
+	@NotBlank
 	private String name;
 
 	private Integer rowguid;
@@ -39,6 +42,7 @@ public class Productsubcategory implements Serializable {
 	private List<Product> products;
 
 	// bi-directional many-to-one association to Productcategory
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "productcategoryid")
 	private Productcategory productcategory;

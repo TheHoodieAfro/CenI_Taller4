@@ -68,11 +68,11 @@ public class Transactionhistory implements Serializable {
 		this.actualcost = actualcost;
 	}
 
-	public Timestamp getModifieddate() {
+	public LocalDate getModifieddate() {
 		return this.modifieddate;
 	}
 
-	public void setModifieddate(Timestamp modifieddate) {
+	public void setModifieddate(LocalDate modifieddate) {
 		this.modifieddate = modifieddate;
 	}
 
@@ -100,11 +100,11 @@ public class Transactionhistory implements Serializable {
 		this.referenceorderlineid = referenceorderlineid;
 	}
 
-	public Timestamp getTransactiondate() {
+	public LocalDate getTransactiondate() {
 		return this.transactiondate;
 	}
 
-	public void setTransactiondate(Timestamp transactiondate) {
+	public void setTransactiondate(LocalDate transactiondate) {
 		this.transactiondate = transactiondate;
 	}
 

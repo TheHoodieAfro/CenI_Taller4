@@ -131,7 +131,7 @@ public class Product implements Serializable {
 		return this.daystomanufacture;
 	}
 
-	public Timestamp getDiscontinueddate() {
+	public LocalDate getDiscontinueddate() {
 		return this.discontinueddate;
 	}
 
@@ -147,7 +147,7 @@ public class Product implements Serializable {
 		return this.makeflag;
 	}
 
-	public Timestamp getModifieddate() {
+	public LocalDate getModifieddate() {
 		return this.modifieddate;
 	}
 
@@ -187,11 +187,11 @@ public class Product implements Serializable {
 		return this.safetystocklevel;
 	}
 
-	public Timestamp getSellenddate() {
+	public LocalDate getSellenddate() {
 		return this.sellenddate;
 	}
 
-	public Timestamp getSellstartdate() {
+	public LocalDate getSellstartdate() {
 		return this.sellstartdate;
 	}
 
@@ -249,7 +249,7 @@ public class Product implements Serializable {
 		this.daystomanufacture = daystomanufacture;
 	}
 
-	public void setDiscontinueddate(Timestamp discontinueddate) {
+	public void setDiscontinueddate(LocalDate discontinueddate) {
 		this.discontinueddate = discontinueddate;
 	}
 
@@ -265,7 +265,7 @@ public class Product implements Serializable {
 		this.makeflag = makeflag;
 	}
 
-	public void setModifieddate(Timestamp modifieddate) {
+	public void setModifieddate(LocalDate modifieddate) {
 		this.modifieddate = modifieddate;
 	}
 
@@ -305,11 +305,11 @@ public class Product implements Serializable {
 		this.safetystocklevel = safetystocklevel;
 	}
 
-	public void setSellenddate(Timestamp sellenddate) {
+	public void setSellenddate(LocalDate sellenddate) {
 		this.sellenddate = sellenddate;
 	}
 
-	public void setSellstartdate(Timestamp sellstartdate) {
+	public void setSellstartdate(LocalDate sellstartdate) {
 		this.sellstartdate = sellstartdate;
 	}
 

@@ -98,7 +98,7 @@ public class Document implements Serializable {
 		return this.folderflag;
 	}
 
-	public Timestamp getModifieddate() {
+	public LocalDate getModifieddate() {
 		return this.modifieddate;
 	}
 
@@ -161,7 +161,7 @@ public class Document implements Serializable {
 		this.folderflag = folderflag;
 	}
 
-	public void setModifieddate(Timestamp modifieddate) {
+	public void setModifieddate(LocalDate modifieddate) {
 		this.modifieddate = modifieddate;
 	}
 
