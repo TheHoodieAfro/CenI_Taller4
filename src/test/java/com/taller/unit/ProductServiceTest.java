@@ -28,8 +28,8 @@ import com.taller.model.Productcategory;
 import com.taller.model.Productsubcategory;
 import com.taller.model.Unitmeasure;
 import com.taller.repository.interfaces.ProductRepository;
-import com.taller.repository.interfaces.ProductcategoryRespository;
-import com.taller.repository.interfaces.ProductsubcategoryRespository;
+import com.taller.repository.interfaces.ProductcategoryRepository;
+import com.taller.repository.interfaces.ProductsubcategoryRepository;
 import com.taller.service.implementations.ProductServiceImp;
 import com.taller.service.interfaces.ProductService;
 
@@ -45,10 +45,10 @@ class ProductServiceTest {
 	private ProductRepository pr;
 	
 	@Mock
-	private ProductcategoryRespository cr;
+	private ProductcategoryRepository cr;
 	
 	@Mock
-	private ProductsubcategoryRespository scr;
+	private ProductsubcategoryRepository scr;
 	
 	@InjectMocks
 	private ProductService ps;

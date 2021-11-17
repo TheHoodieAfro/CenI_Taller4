@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.taller.model.Productsubcategory;
 
-public interface ProductsubcategoryRespository extends CrudRepository<Productsubcategory, Integer> {
+public interface ProductsubcategoryRepository extends CrudRepository<Productsubcategory, Integer> {
 
 }

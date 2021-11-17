@@ -2,6 +2,7 @@ package com.taller.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.sql.Timestamp;
 
 
@@ -14,8 +15,10 @@ import java.sql.Timestamp;
 public class Productdocument implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private ProductdocumentPK id;
+	@Id
+	@SequenceGenerator(name = "PRODUCTDOCUMENT_PRODUCTDOCUMENTID_GENERATOR", allocationSize = 1, sequenceName = "PRODUCTDOCUMENT_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUCTDOCUMENT_PRODUCTDOCUMENTID_GENERATOR")
+	private Integer id;
 
 	private Timestamp modifieddate;
 
@@ -32,11 +35,11 @@ public class Productdocument implements Serializable {
 	public Productdocument() {
 	}
 
-	public ProductdocumentPK getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(ProductdocumentPK id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

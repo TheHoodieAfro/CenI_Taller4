@@ -6,17 +6,17 @@ import org.springframework.stereotype.Service;
 import com.taller.model.Product;
 import com.taller.model.Vendor;
 import com.taller.repository.interfaces.ProductRepository;
-import com.taller.repository.interfaces.VendorRespository;
+import com.taller.repository.interfaces.VendorRepository;
 import com.taller.service.interfaces.ProductService;
 import com.taller.service.interfaces.ProductVendorService;
 
 @Service
 public class VendorServiceImp implements ProductVendorService{
 
-	private VendorRespository vr;
+	private VendorRepository vr;
 
 	@Autowired
-	public VendorServiceImp(VendorRespository vr) {
+	public VendorServiceImp(VendorRepository vr) {
 		this.vr = vr;
 	}
 	

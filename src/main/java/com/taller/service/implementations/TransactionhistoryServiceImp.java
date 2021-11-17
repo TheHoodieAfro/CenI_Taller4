@@ -1,12 +1,14 @@
 package com.taller.service.implementations;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.taller.model.Document;
 import com.taller.model.Transactionhistory;
-import com.taller.repository.interfaces.DocumentRespository;
+import com.taller.repository.interfaces.DocumentRepository;
 import com.taller.repository.interfaces.TransactionhistoryRepository;
 
+@Service
 public class TransactionhistoryServiceImp {
 	
 	private TransactionhistoryRepository thr;

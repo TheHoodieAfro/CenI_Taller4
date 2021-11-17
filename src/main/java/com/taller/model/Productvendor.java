@@ -15,8 +15,10 @@ import java.sql.Timestamp;
 public class Productvendor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private ProductvendorPK id;
+	@Id
+	@SequenceGenerator(name = "PRODUCTVENDOR_PRODUCTVENDORID_GENERATOR", allocationSize = 1, sequenceName = "PRODUCTVENDOR_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUCTVENDOR_PRODUCTVENDORID_GENERATOR")
+	private Integer id;
 
 	private Integer averageleadtime;
 
@@ -44,11 +46,11 @@ public class Productvendor implements Serializable {
 	public Productvendor() {
 	}
 
-	public ProductvendorPK getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(ProductvendorPK id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

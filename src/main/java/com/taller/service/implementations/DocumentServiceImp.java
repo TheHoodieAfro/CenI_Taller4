@@ -5,16 +5,16 @@ import org.springframework.stereotype.Service;
 
 import com.taller.model.Document;
 import com.taller.model.Product;
-import com.taller.repository.interfaces.DocumentRespository;
+import com.taller.repository.interfaces.DocumentRepository;
 import com.taller.repository.interfaces.ProductRepository;
 
 @Service
 public class DocumentServiceImp {
 	
-	private DocumentRespository dr;
+	private DocumentRepository dr;
 
 	@Autowired
-	public DocumentServiceImp(DocumentRespository dr) {
+	public DocumentServiceImp(DocumentRepository dr) {
 		this.dr = dr;
 	}
 	
