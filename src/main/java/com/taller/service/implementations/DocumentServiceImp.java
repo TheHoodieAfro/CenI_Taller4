@@ -7,9 +7,10 @@ import com.taller.model.Document;
 import com.taller.model.Product;
 import com.taller.repository.interfaces.DocumentRepository;
 import com.taller.repository.interfaces.ProductRepository;
+import com.taller.service.interfaces.DocumentService;
 
 @Service
-public class DocumentServiceImp {
+public class DocumentServiceImp implements DocumentService {
 	
 	private DocumentRepository dr;
 
@@ -18,14 +19,16 @@ public class DocumentServiceImp {
 		this.dr = dr;
 	}
 	
+	public Iterable<Document> findAll() {
+		return dr.findAll();
+	}
+	
+	@Override
 	public Document save(Document doc) {
 		return dr.save(doc);
 	}
 	
-	public Iterable<Document> findAll() {
-		return dr.findAll();
-	}
-
+	@Override
 	public Document edit(Document doc) {
 		// TODO Auto-generated method stub
 		return null;

@@ -17,13 +17,13 @@ public class ProductServiceImp implements ProductService {
 		this.pr = pr;
 	}
 	
+	public Iterable<Product> findAll() {
+		return pr.findAll();
+	}
+	
 	@Override
 	public Product save(Product prod) {
 		return pr.save(prod);
-	}
-	
-	public Iterable<Product> findAll() {
-		return pr.findAll();
 	}
 
 	@Override

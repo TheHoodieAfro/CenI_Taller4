@@ -4,35 +4,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.taller.model.Product;
+import com.taller.model.Unitmeasure;
 import com.taller.model.Vendor;
 import com.taller.repository.interfaces.ProductRepository;
+import com.taller.repository.interfaces.UnitmeasureRepository;
 import com.taller.repository.interfaces.VendorRepository;
 import com.taller.service.interfaces.ProductService;
 import com.taller.service.interfaces.ProductvendorService;
+import com.taller.service.interfaces.UnitmeasureService;
 import com.taller.service.interfaces.VendorService;
 
 @Service
-public class VendorServiceImp implements VendorService{
+public class UnitmeasureServiceImp implements UnitmeasureService {
 
-	private VendorRepository vr;
+	private UnitmeasureRepository umr;
 
 	@Autowired
-	public VendorServiceImp(VendorRepository vr) {
-		this.vr = vr;
+	public UnitmeasureServiceImp(UnitmeasureRepository umr) {
+		this.umr = umr;
 	}
 	
-	public Iterable<Vendor> findAll() {
-		return vr.findAll();
+	public Iterable<Unitmeasure> findAll() {
+		return umr.findAll();
 	}
 	
 	@Override
-	public Vendor save(Vendor vendor) {
+	public Unitmeasure save(Unitmeasure vendor) {
 		// TODO Auto-generated method stub
-		return vr.save(vendor);
+		return umr.save(vendor);
 	}
 
 	@Override
-	public Vendor edit(Vendor vendor) {
+	public Unitmeasure edit(Unitmeasure vendor) {
 		// TODO Auto-generated method stub
 		return null;
 	}

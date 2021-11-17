@@ -7,9 +7,10 @@ import com.taller.model.Document;
 import com.taller.model.Transactionhistory;
 import com.taller.repository.interfaces.DocumentRepository;
 import com.taller.repository.interfaces.TransactionhistoryRepository;
+import com.taller.service.interfaces.TransactionhistoryService;
 
 @Service
-public class TransactionhistoryServiceImp {
+public class TransactionhistoryServiceImp implements TransactionhistoryService {
 	
 	private TransactionhistoryRepository thr;
 
@@ -18,15 +19,17 @@ public class TransactionhistoryServiceImp {
 		this.thr = thr;
 	}
 	
-	public Transactionhistory save(Transactionhistory doc) {
-		return thr.save(doc);
-	}
-	
 	public Iterable<Transactionhistory> findAll() {
 		return thr.findAll();
 	}
+	
+	@Override
+	public Transactionhistory save(Transactionhistory doc) {
+		return thr.save(doc);
+	}
 
-	public Document edit(Document doc) {
+	@Override
+	public Transactionhistory edit(Transactionhistory doc) {
 		// TODO Auto-generated method stub
 		return null;
 	}
