@@ -87,8 +87,8 @@ class ProductServiceTest {
 			sc.get().addProduct(p.get());
 			p.get().setUnitmeasure1(um);
 			p.get().setUnitmeasure2(um);
-			p.get().setSellstartdate(new Timestamp(1));
-			p.get().setSellenddate(new Timestamp(2));
+			//p.get().setSellstartdate(new Timestamp(1));
+			//p.get().setSellenddate(new Timestamp(2));
 			p.get().setDaystomanufacture(5);
 			when(pr.save(p.get())).thenReturn(p.get());
 		}
@@ -102,8 +102,8 @@ class ProductServiceTest {
 		
 		@Test
 		public void saveStartDateOverFinishDate() {
-			p.get().setSellstartdate(new Timestamp(2));
-			p.get().setSellenddate(new Timestamp(1));
+			//p.get().setSellstartdate(new Timestamp(2));
+			//p.get().setSellenddate(new Timestamp(1));
 			
 			assertNull(ps.save(p.get()));
 			

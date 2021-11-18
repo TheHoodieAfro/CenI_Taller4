@@ -27,36 +27,32 @@
 							<tr>
 								<th>productid</th>
 								<th>name</th>
+								<th>color</th>
+								<th>listprice</th>
 								<th>daystomanufacture</th>
-								<th>productnumber</th>
-								<th>productsubcategory</th>
-								<th>productcategory</th>
-								<th>unitmeasure1</th>
-								<th>unitmeasure2</th>
-								<th>edit</th>
-								<th>remove</th>
+								<th>size</th>
+								<th>weight</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="product : ${products}">
 								<td th:text="${product.productid}"></td>
 								<td th:text="${product.name}"></td>
+								<td th:text="${product.color}"></td>
+								<td th:text="${product.listprice}"></td>
 								<td th:text="${product.daystomanufacture}"></td>
-								<td th:text="${product.productnumber}"></td>
-								<td th:text="${product.productsubcategory.name}"></td>
-								<td th:text="${product.productsubcategory.productcategory.name}"></td>
-								<td th:text="${product.unitmeasure1.name}"></td>
-								<td th:text="${product.unitmeasure2.name}"></td>
-								<td><a th:href="@{/product/edit/{id}(id=${product.productid})}"
-                                    class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
-                                <td><a th:href="@{/product/del/{id}(id=${product.productid})}"
-                                    class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+								<td th:text="${product.size}"></td>
+								<td th:text="${product.weight}"></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
+				<p class="my-5">
+					<a href="" class="btn btn-primary"><i
+						class="fas fa-calendar-plus ml-2"></i></a>
+				</p>
 					<p class="my-5">
-					<a href="/product/add" class="btn btn-primary"><i
+					<a href="/addProduct" class="btn btn-primary"><i
 						class="fas fa-user-plus ml-2"></i></a>
 				</p>
 			</div>

@@ -62,6 +62,9 @@ public class AdminController {
 	@GetMapping("/product/add")
 	public String addProduct(Model model) {
 		model.addAttribute("product", new Product());
+		model.addAttribute("productcategories", pcs.findAll());
+		model.addAttribute("productsubcategories", pscs.findAll());
+		model.addAttribute("unitmeasures", ums.findAll());
 		return "admin/addProduct";
 	}
 	
