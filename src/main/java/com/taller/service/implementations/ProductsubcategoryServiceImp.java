@@ -16,10 +16,13 @@ import com.taller.service.interfaces.ProductsubcategoryService;
 public class ProductsubcategoryServiceImp implements ProductsubcategoryService {
 
 	private ProductsubcategoryRepository pscr;
+	
+	private ProductcategoryRepository pcr;
 
 	@Autowired
-	public ProductsubcategoryServiceImp(ProductsubcategoryRepository pscr) {
+	public ProductsubcategoryServiceImp(ProductsubcategoryRepository pscr, ProductcategoryRepository pcr) {
 		this.pscr = pscr;
+		this.pcr = pcr;
 	}
 	
 	public Iterable<Productsubcategory> findAll() {
@@ -28,6 +31,7 @@ public class ProductsubcategoryServiceImp implements ProductsubcategoryService {
 	
 	@Override
 	public Productsubcategory save(Productsubcategory doc) {
+		doc.setProductcategory(pcr.findById(doc.getProductcategory().getProductcategoryid()).get());
 		return pscr.save(doc);
 	}
 	

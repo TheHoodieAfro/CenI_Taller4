@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.taller.model.Unitmeasure;
 
-public interface UnitmeasureRepository extends CrudRepository<Unitmeasure, String> {
+public interface UnitmeasureRepository extends CrudRepository<Unitmeasure, Integer> {
 
 }

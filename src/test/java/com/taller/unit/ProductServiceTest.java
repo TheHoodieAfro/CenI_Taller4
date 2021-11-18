@@ -30,6 +30,7 @@ import com.taller.model.Unitmeasure;
 import com.taller.repository.interfaces.ProductRepository;
 import com.taller.repository.interfaces.ProductcategoryRepository;
 import com.taller.repository.interfaces.ProductsubcategoryRepository;
+import com.taller.repository.interfaces.UnitmeasureRepository;
 import com.taller.service.implementations.ProductServiceImp;
 import com.taller.service.interfaces.ProductService;
 
@@ -50,12 +51,15 @@ class ProductServiceTest {
 	@Mock
 	private ProductsubcategoryRepository scr;
 	
+	@Mock
+	private UnitmeasureRepository umr;
+	
 	@InjectMocks
 	private ProductService ps;
 	
 	@Autowired
 	public ProductServiceTest() {
-		this.ps = new ProductServiceImp(pr);
+		this.ps = new ProductServiceImp(pr, umr, scr);
 	}
 
 	@Nested

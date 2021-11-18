@@ -1,13 +1,16 @@
 package com.taller.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.validation.BindingResult;
 
 import com.taller.model.Product;
 import com.taller.model.Productcategory;
@@ -15,6 +18,7 @@ import com.taller.model.Productsubcategory;
 import com.taller.model.Productvendor;
 import com.taller.model.Unitmeasure;
 import com.taller.model.Vendor;
+import com.taller.model.info;
 import com.taller.service.implementations.ProductServiceImp;
 import com.taller.service.implementations.ProductcategoryServiceImp;
 import com.taller.service.implementations.ProductsubcategoryServiceImp;
@@ -69,13 +73,17 @@ public class AdminController {
 	}
 	
 	@PostMapping("/product/add")
-	public String saveProduct(Product product, BindingResult bindingResult, Model model, @RequestParam(value = "action", required = true) String action) {
+	public String saveProduct(@Validated(info.class) Product product, BindingResult bindingResult, Model model, @RequestParam(value = "action", required = true) String action) {
+		if (action.equals("Cancel")) {
+			return "redirect:/product";
+		}
 		if(bindingResult.hasErrors()) {
+			System.out.println("entre");
 			model.addAttribute("product", new Product());
 			model.addAttribute("productcategories", pcs.findAll());
 			model.addAttribute("productsubcategories", pscs.findAll());
 			model.addAttribute("unitmeasures", ums.findAll());
-			//return "admin/addProduct";
+			return "admin/addProduct";
 		}
 		ps.save(product);
 		return "redirect:/product";
@@ -185,6 +193,18 @@ public class AdminController {
 	
 	//------------------------------------------------------- Edit -------------------------------------------------------
 	
+	
+	//------------------------------------------------------- Delete -------------------------------------------------------
+	@GetMapping("/product/delete/{id}")
+	public String deleteProduct(@PathVariable("id") Integer id, Model model) {
+		Optional<Product> product = ps.findById(id);
+		if (product.isEmpty())
+			throw new IllegalArgumentException("Invalid user Id:" + id);
+		
+		
+		ps.delete(product.get());
+		return "redirect:/product";
+	}
 	
 	//------------------------------------------------------- Extra methods -------------------------------------------------------
 	

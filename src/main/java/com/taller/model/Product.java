@@ -39,7 +39,7 @@ public class Product implements Serializable {
 
 	private String color;
 	
-	@Min(value = 1)
+	@Min(value = 1, groups = info.class)
 	private Integer daystomanufacture;
 
 	private LocalDate discontinueddate;
@@ -56,7 +56,7 @@ public class Product implements Serializable {
 
 	private String productline;
 	
-	@NotBlank
+	@NotBlank(groups = info.class)
 	private String productnumber;
 
 	private Integer reorderpoint;
@@ -78,20 +78,20 @@ public class Product implements Serializable {
 	private BigDecimal weight;
 
 	// bi-directional many-to-one association to Productsubcategory
-	@NotNull
+	@NotNull(groups = info.class)
 	@ManyToOne
 	@JoinColumn(name = "productsubcategoryid")
 	private Productsubcategory productsubcategory;
 
 	// bi-directional many-to-one association to Unitmeasure
-	@NotNull
+	@NotNull(groups = info.class)
 	@ManyToOne
-	//@JoinColumn(name = "sizeunitmeasurecode")
+	@JoinColumn(name = "sizeunitmeasurecode")
 	private Unitmeasure unitmeasure1;
 
 	// bi-directional many-to-one association to Unitmeasure
 	@ManyToOne
-	//@JoinColumn(name = "weightunitmeasurecode")
+	@JoinColumn(name = "weightunitmeasurecode")
 	private Unitmeasure unitmeasure2;
 
 	// bi-directional many-to-one association to Productdocument
