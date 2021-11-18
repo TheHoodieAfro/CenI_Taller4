@@ -199,13 +199,25 @@ public class AdminController {
 	public String deleteProduct(@PathVariable("id") Integer id, Model model) {
 		Optional<Product> product = ps.findById(id);
 		if (product.isEmpty())
-			throw new IllegalArgumentException("Invalid user Id:" + id);
+			throw new IllegalArgumentException("Invalid product Id:" + id);
 		
 		
 		ps.delete(product.get());
 		return "redirect:/product";
 	}
 	
+	@GetMapping("/productvendor/delete/{id}")
+	public String deleteProductvendor(@PathVariable("id") Integer id, Model model) {
+		Optional<Productvendor> productvendor = pvs.findById(id);
+		if (productvendor.isEmpty())
+			throw new IllegalArgumentException("Invalid product vendor Id:" + id);
+		
+		
+		pvs.delete(productvendor.get());
+		return "redirect:/productvendor";
+	}
+	
 	//------------------------------------------------------- Extra methods -------------------------------------------------------
+	
 	
 }

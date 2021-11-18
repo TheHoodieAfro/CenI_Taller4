@@ -1,5 +1,7 @@
 package com.taller.service.implementations;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +39,16 @@ public class ProductvendorServiceImp implements ProductvendorService{
 	public Productvendor edit(Productvendor vendor) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public Optional<Productvendor> findById(Integer id) {
+		// TODO Auto-generated method stub
+		return pvr.findById(id);
+	}
+
+	public void delete(Productvendor productvendor) {
+		// TODO Auto-generated method stub
+		pvr.deleteById(productvendor.getId());
 	}
 
 }
