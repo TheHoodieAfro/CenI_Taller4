@@ -175,10 +175,10 @@ public class AdminController {
 		}
 		
 		if (action.equals("Cancel")) {
-			return "redirect:/productvendor";
+			return "redirect:/vendor/add";
 		}	
 		vs.save(vendor);
-		return "redirect:/productvendor";
+		return "redirect:/vendor/add";
 	}
 	
 	//------------------------------------------------------- Edit -------------------------------------------------------
