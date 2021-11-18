@@ -52,7 +52,7 @@
 						<div class="form-group col-md-6">
 							<label for="productsubcategory" class="col-form-label">productsubcategory</label> <select
 								th:field="*{productsubcategory}">
-								<option th:each="psc : ${productsubcategories}" th:value="${pc.productsubcategoryid}"
+								<option th:each="psc : ${productsubcategories}" th:value="${psc.productsubcategoryid}"
 									class="form-control" th:text="${psc.name}"
 									th:selected="${product.productsubcategory=psc}"></option>
 							</select> <span th:if="${#fields.hasErrors('productsubcategory')}"

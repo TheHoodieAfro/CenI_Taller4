@@ -86,12 +86,12 @@ public class Product implements Serializable {
 	// bi-directional many-to-one association to Unitmeasure
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "sizeunitmeasurecode")
+	//@JoinColumn(name = "sizeunitmeasurecode")
 	private Unitmeasure unitmeasure1;
 
 	// bi-directional many-to-one association to Unitmeasure
 	@ManyToOne
-	@JoinColumn(name = "weightunitmeasurecode")
+	//@JoinColumn(name = "weightunitmeasurecode")
 	private Unitmeasure unitmeasure2;
 
 	// bi-directional many-to-one association to Productdocument

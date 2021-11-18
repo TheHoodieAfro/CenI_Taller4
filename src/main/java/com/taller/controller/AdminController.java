@@ -69,14 +69,13 @@ public class AdminController {
 	}
 	
 	@PostMapping("/product/add")
-	public String saveProduct(@Validated Product product, BindingResult bindingResult, Model model, @RequestParam(value = "action", required = true) String action) {
+	public String saveProduct(Product product, BindingResult bindingResult, Model model, @RequestParam(value = "action", required = true) String action) {
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("product", new Product());
-			return "admin/addProduct";
-		}
-		
-		if (action.equals("Cancel")) {
-			return "redirect:/product";
+			model.addAttribute("productcategories", pcs.findAll());
+			model.addAttribute("productsubcategories", pscs.findAll());
+			model.addAttribute("unitmeasures", ums.findAll());
+			//return "admin/addProduct";
 		}
 		ps.save(product);
 		return "redirect:/product";

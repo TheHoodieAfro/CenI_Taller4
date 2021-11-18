@@ -25,7 +25,7 @@ public class Unitmeasure implements Serializable {
 	@Id
 	@SequenceGenerator(name = "UNITMEASURE_UNITMEASURECODE_GENERATOR", allocationSize = 1, sequenceName = "UNITMEASURE_SEQ")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "UNITMEASURE_UNITMEASURECODE_GENERATOR")
-	private String unitmeasurecode;
+	private Integer unitmeasurecode;
 
 	private Timestamp modifieddate;
 
@@ -73,7 +73,7 @@ public class Unitmeasure implements Serializable {
 		return this.products2;
 	}
 
-	public String getUnitmeasurecode() {
+	public Integer getUnitmeasurecode() {
 		return this.unitmeasurecode;
 	}
 
@@ -107,7 +107,7 @@ public class Unitmeasure implements Serializable {
 		this.products2 = products2;
 	}
 
-	public void setUnitmeasurecode(String unitmeasurecode) {
+	public void setUnitmeasurecode(Integer unitmeasurecode) {
 		this.unitmeasurecode = unitmeasurecode;
 	}
 
