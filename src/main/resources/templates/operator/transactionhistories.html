@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="../css/shards.min.css">
 </head>
 <body>
-	<div th:switch="${transactionHistory}" class="container my-5">
+	<div th:switch="${transactionhistories}" class="container my-5">
 		<div class="row">
 			<div class="col-md-10">
 				<h2 th:case="null">No hay transacciones</h2>
@@ -29,33 +29,36 @@
 								<th>actualcost</th>
 								<th>quantity</th>
 								<th>transactiondate</th>
-								<th>owner</th>
-								<th>transactiontype</th>
+								<th>modifieddate</th>
+								<th>product</th>
+								<th>edit</th>
+								<th>remove</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="th : ${transactionHistory}">
+							<tr th:each="th : ${transactionhistories}">
 								<td th:text="${th.transactionid}"></td>
 								<td th:text="${th.actualcost}"></td>
 								<td th:text="${th.quantity}"></td>
-								<td th:text="${th.owner}"></td>
-								<td th:text="${th.transactiontype}"></td>
+								<td th:text="${th.transactiondate.toString()}"></td>
+								<td th:text="${th.modifieddate.toString()}"></td>
+								<td th:text="${th.product.name}"></td>
+								<td><a th:href="@{/transactionhistory/edit/{id}(id=${th.transactionid})}"
+                                    class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                <td><a th:href="@{/transactionhistory/delete/{id}(id=${th.transactionid})}"
+                                    class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<p class="my-5">
-					<a href="" class="btn btn-primary"><i
-						class="fas fa-calendar-plus ml-2"></i></a>
-				</p>
 					<p class="my-5">
-					<a href="/addTransactionHistory" class="btn btn-primary"><i
+					<a href="/transactionhistory/add" class="btn btn-primary"><i
 						class="fas fa-user-plus ml-2"></i></a>
 				</p>
 			</div>
 		</div>
 		<p>
-			<a href="/user/user.html"><i class="fas fa-home ml-2"></i> Go back to main</a>
+			<a href="/operator/operator.html"><i class="fas fa-home ml-2"></i> Go back to main</a>
 		</p>
 	</div>
 </body>

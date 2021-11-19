@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Appointments</title>
+<title>Vendedores de productos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -16,40 +16,49 @@
 <link rel="stylesheet" href="../css/shards.min.css">
 </head>
 <body>
-	<div th:switch="${vendors}" class="container my-5">
+	<div th:switch="${productvendors}" class="container my-5">
 		<div class="row">
 			<div class="col-md-10">
-				<h2 th:case="null">Mr. Mcqueen no hay nadie!</h2>
+				<h2 th:case="null">No hay vendedores de productos</h2>
 				<div th:case="*">
-					<h2 class="my-5">Personas</h2>
+					<h2 class="my-5">Vendedores de productos</h2>
 					<table class="table table-striped table-responsive-md">
 						<thead>
 							<tr>
-								<th>businessentityid</th>
-								<th>name</th>
-
+								<th>id</th>
+								<th>maxorderqty</th>
+								<th>minorderqty</th>
+								<th>standardprice</th>
+								<th>vendor</th>
+								<th>product</th>
+								<th>edit</th>
+								<th>remove</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="vendor : ${vendors}">
-								<td th:text="${vendor.businessentityid}"></td>
-								<td th:text="${vendor.name}"></td>
+							<tr th:each="productvendor : ${productvendors}">
+								<td th:text="${productvendor.id}"></td>
+								<td th:text="${productvendor.maxorderqty}"></td>
+								<td th:text="${productvendor.minorderqty}"></td>
+								<td th:text="${productvendor.standardprice}"></td>
+								<td th:text="${productvendor.vendor.name}"></td>
+								<td th:text="${productvendor.product.name}"></td>
+								<td><a th:href="@{/productvendor/edit/{id}(id=${productvendor.id})}"
+                                    class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                <td><a th:href="@{/productvendor/delete/{id}(id=${productvendor.id})}"
+                                    class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<p class="my-5">
-					<a href="" class="btn btn-primary"><i
-						class="fas fa-calendar-plus ml-2"></i></a>
-				</p>
 					<p class="my-5">
-					<a href="/addVendor" class="btn btn-primary"><i
+					<a href="/productvendor/add" class="btn btn-primary"><i
 						class="fas fa-user-plus ml-2"></i></a>
 				</p>
 			</div>
 		</div>
 		<p>
-			<a href="/user/user.html"><i class="fas fa-home ml-2"></i> Go back to main</a>
+			<a href="/admin/admin.html"><i class="fas fa-home ml-2"></i> Go back to main</a>
 		</p>
 	</div>
 </body>

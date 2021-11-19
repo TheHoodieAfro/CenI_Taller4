@@ -27,7 +27,7 @@ public class Document implements Serializable {
 	@Id
 	@SequenceGenerator(name = "DOCUMENT_DOCUMENTNODE_GENERATOR", allocationSize = 1, sequenceName = "DOCUMENT_SEQ")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DOCUMENT_DOCUMENTNODE_GENERATOR")
-	private String documentnode;
+	private Integer documentnode;
 
 	private Integer changenumber;
 
@@ -78,7 +78,7 @@ public class Document implements Serializable {
 		return this.document;
 	}
 
-	public String getDocumentnode() {
+	public Integer getDocumentnode() {
 		return this.documentnode;
 	}
 
@@ -141,7 +141,7 @@ public class Document implements Serializable {
 		this.document = document;
 	}
 
-	public void setDocumentnode(String documentnode) {
+	public void setDocumentnode(Integer documentnode) {
 		this.documentnode = documentnode;
 	}
 

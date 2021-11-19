@@ -144,5 +144,13 @@ public class Productvendor implements Serializable {
 	public void setVendor(Vendor vendor) {
 		this.vendor = vendor;
 	}
+	
+	public Product getProduct() {
+		return this.product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
 }

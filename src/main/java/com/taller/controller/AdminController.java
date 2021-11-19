@@ -154,19 +154,24 @@ public class AdminController {
 	@GetMapping("/productvendor/add")
 	public String addProductvendor(Model model) {
 		model.addAttribute("productvendor", new Productvendor());
+		model.addAttribute("vendors", vs.findAll());
+		model.addAttribute("products", ps.findAll());
 		return "admin/addProductvendor";
 	}
 	
 	@PostMapping("/productvendor/add")
 	public String saveProductvendor(@Validated Productvendor productvendor, BindingResult bindingResult, Model model, @RequestParam(value = "action", required = true) String action) {
-		if(bindingResult.hasErrors()) {
-			model.addAttribute("productvendor", new Productvendor());
-			return "admin/addProductvendor";
-		}
-		
 		if (action.equals("Cancel")) {
 			return "redirect:/productvendor";
-		}	
+		}
+		
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("productvendor", new Productvendor());
+			model.addAttribute("vendors", vs.findAll());
+			model.addAttribute("products", ps.findAll());
+			return "admin/addProductvendor";
+		}
+			
 		pvs.save(productvendor);
 		return "redirect:/productvendor";
 	}
@@ -179,14 +184,15 @@ public class AdminController {
 	
 	@PostMapping("/vendor/add")
 	public String saveVendor(@Validated Vendor vendor, BindingResult bindingResult, Model model, @RequestParam(value = "action", required = true) String action) {
+		if (action.equals("Cancel")) {
+			return "redirect:/vendor/add";
+		}
+		
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("vendor", new Vendor());
 			return "admin/addVendor";
 		}
 		
-		if (action.equals("Cancel")) {
-			return "redirect:/vendor/add";
-		}	
 		vs.save(vendor);
 		return "redirect:/vendor/add";
 	}

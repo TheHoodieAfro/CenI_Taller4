@@ -1,5 +1,7 @@
 package com.taller.service.implementations;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,16 @@ public class DocumentServiceImp implements DocumentService {
 	public Document edit(Document doc) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public Optional<Document> findById(Integer id) {
+		// TODO Auto-generated method stub
+		return dr.findById(id);
+	}
+
+	public void delete(Document document) {
+		// TODO Auto-generated method stub
+		dr.deleteById(document.getDocumentnode());
 	}
 	
 }

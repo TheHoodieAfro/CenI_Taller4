@@ -19,10 +19,16 @@ import com.taller.service.interfaces.VendorService;
 public class ProductvendorServiceImp implements ProductvendorService{
 
 	private ProductvendorRepository pvr;
+	
+	private VendorRepository vr;
+	
+	private ProductRepository pr;
 
 	@Autowired
-	public ProductvendorServiceImp(ProductvendorRepository pvr) {
+	public ProductvendorServiceImp(ProductvendorRepository pvr, VendorRepository vr, ProductRepository pr) {
 		this.pvr = pvr;
+		this.vr = vr;
+		this.pr = pr;
 	}
 	
 	public Iterable<Productvendor> findAll() {
@@ -31,7 +37,8 @@ public class ProductvendorServiceImp implements ProductvendorService{
 	
 	@Override
 	public Productvendor save(Productvendor vendor) {
-		// TODO Auto-generated method stub
+		vendor.setVendor(vr.findById(vendor.getVendor().getBusinessentityid()).get());
+		vendor.setProduct(pr.findById(vendor.getProduct().getProductid()).get());
 		return pvr.save(vendor);
 	}
 

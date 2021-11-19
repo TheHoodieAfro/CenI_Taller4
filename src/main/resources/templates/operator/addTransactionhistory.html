@@ -20,7 +20,7 @@
 		<h2 class="mb-5">Crear Transaccion</h2>
 		<div class="row">
 			<div class="col-md-6">
-				<form action="#" th:action="@{/addTransactionHistory}" th:object="${transactionHistory}"
+				<form action="#" th:action="@{/transactionhistory/add}" th:object="${transactionhistory}"
 					method="post">
 					<div class="row">
 					
@@ -32,6 +32,7 @@
 								th:if="${#fields.hasErrors('actualcost')}" th:errors="*{actualcost}"
 								class="text-danger"></span>
 						</div>
+						
 						<div class="form-group col-md-6">
 							<label for="quantity" class="col-form-label">quantity</label> <input
 								type="text" th:field="*{quantity}" class="form-control" id="quantity"
@@ -39,12 +40,31 @@
 								th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"
 								class="text-danger"></span>
 						</div>
+						
 						<div class="form-group col-md-6">
-							<label for="owner" class="col-form-label">owner</label> <input
-								type="text" th:field="*{owner}" class="form-control" id="owner"
-								placeholder="owner"> <span
-								th:if="${#fields.hasErrors('owner')}" th:errors="*{owner}"
+							<label for="transactiondate" class="col-form-label">transactiondate</label> <input
+								type="date" th:field="*{transactiondate}" class="form-control" id="transactiondate"
+								placeholder="transactiondate"> <span
+								th:if="${#fields.hasErrors('transactiondate')}" th:errors="*{transactiondate}"
 								class="text-danger"></span>
+						</div>
+						
+						<div class="form-group col-md-6">
+							<label for="modifieddate" class="col-form-label">modifieddate</label> <input
+								type="date" th:field="*{modifieddate}" class="form-control" id="modifieddate"
+								placeholder="modifieddate"> <span
+								th:if="${#fields.hasErrors('modifieddate')}" th:errors="*{modifieddate}"
+								class="text-danger"></span>
+						</div>
+						
+						<div class="form-group col-md-6">
+							<label for="product" class="col-form-label">product</label> <select
+								th:field="*{product}">
+								<option th:each="p : ${products}" th:value="${p.productid}"
+									class="form-control" th:text="${p.name}"
+									th:selected="${transactionhistory.product=p}"></option>
+							</select> <span th:if="${#fields.hasErrors('product')}"
+								th:errors="*{product}" class="text-danger"></span>
 						</div>
 						
 					</div>
