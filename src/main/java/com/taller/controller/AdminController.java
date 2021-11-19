@@ -197,7 +197,69 @@ public class AdminController {
 	}
 	
 	//------------------------------------------------------- Edit -------------------------------------------------------
+	@GetMapping("/product/edit/{id}")
+	public String editProduct(@PathVariable("id") Integer id, Model model) {
+		Product p = ps.findById(id).get();
+		if (p == null)
+			throw new IllegalArgumentException("Invalid product Id:" + id);
+		
+		model.addAttribute("product", p);
+		model.addAttribute("productsubcategories", pscs.findAll());
+		model.addAttribute("unitmeasures", ums.findAll());
+		return "admin/editProduct";
+	}
 	
+	@PostMapping("/product/edit/{id}")
+	public String updateProduct(@PathVariable("id") Integer id, @Validated(info.class) Product product, BindingResult bindingResult, Model model, @RequestParam(value = "action", required = true) String action) {
+		if (action.equals("Cancel")) {
+			return "redirect:/product";
+		}
+		if(bindingResult.hasErrors()) {
+			Product p = ps.findById(id).get();
+			if (p == null)
+				throw new IllegalArgumentException("Invalid product Id:" + id);
+			
+			model.addAttribute("product", p);
+			model.addAttribute("productsubcategories", pscs.findAll());
+			model.addAttribute("unitmeasures", ums.findAll());
+			return "admin/editProduct";
+		}
+		product.setProductid(id);
+		ps.update(product);
+		return "redirect:/product";
+	}
+	
+	@GetMapping("/productvendor/edit/{id}")
+	public String editProductvendor(@PathVariable("id") Integer id, Model model) {
+		Productvendor pv = pvs.findById(id).get();
+		if (pv == null)
+			throw new IllegalArgumentException("Invalid product vendor Id:" + id);
+		
+		model.addAttribute("productvendor", pv);
+		model.addAttribute("vendors", vs.findAll());
+		model.addAttribute("products", ps.findAll());
+		return "admin/editProductvendor";
+	}
+	
+	@PostMapping("/productvendor/edit/{id}")
+	public String updateProductvendor(@PathVariable("id") Integer id, @Validated(info.class) Productvendor productvendor, BindingResult bindingResult, Model model, @RequestParam(value = "action", required = true) String action) {
+		if (action.equals("Cancel")) {
+			return "redirect:/productvendor";
+		}
+		if(bindingResult.hasErrors()) {
+			Productvendor pv = pvs.findById(id).get();
+			if (pv == null)
+				throw new IllegalArgumentException("Invalid product vendor Id:" + id);
+			
+			model.addAttribute("productvendor", pv);
+			model.addAttribute("vendors", vs.findAll());
+			model.addAttribute("products", ps.findAll());
+			return "admin/editProductvendor";
+		}
+		productvendor.setId(id);
+		pvs.update(productvendor);
+		return "redirect:/productvendor";
+	}
 	
 	//------------------------------------------------------- Delete -------------------------------------------------------
 	@GetMapping("/product/delete/{id}")

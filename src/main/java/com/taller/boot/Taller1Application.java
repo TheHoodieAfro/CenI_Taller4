@@ -11,9 +11,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import com.taller.model.Productcategory;
 import com.taller.model.Productsubcategory;
 import com.taller.model.Unitmeasure;
+import com.taller.model.Vendor;
 import com.taller.repository.interfaces.ProductcategoryRepository;
 import com.taller.repository.interfaces.ProductsubcategoryRepository;
 import com.taller.repository.interfaces.UnitmeasureRepository;
+import com.taller.repository.interfaces.VendorRepository;
 
 @SpringBootApplication
 @EnableJpaRepositories("com.taller.repository.interfaces")
@@ -26,7 +28,7 @@ public class Taller1Application {
 	}
 	
 	@Bean
-	public CommandLineRunner add(ProductcategoryRepository pcr, ProductsubcategoryRepository pscr, UnitmeasureRepository umr) {
+	public CommandLineRunner add(ProductcategoryRepository pcr, ProductsubcategoryRepository pscr, UnitmeasureRepository umr, VendorRepository vr) {
 		return (args) -> {
 			Productcategory pc1 = new Productcategory();
 			pc1.setName("Comida");
@@ -65,6 +67,12 @@ public class Taller1Application {
 			um4.setName("inches");
 			umr.save(um4);
 			
+			Vendor v1 = new Vendor();
+			v1.setName("Cristian Sanchez");
+			vr.save(v1);
+			Vendor v2 = new Vendor();
+			v2.setName("dotor uribito");
+			vr.save(v2);
 		};
 	}
 
