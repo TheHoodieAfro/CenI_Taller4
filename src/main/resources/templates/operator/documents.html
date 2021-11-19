@@ -29,8 +29,10 @@
 								<th>document</th>
 								<th>fileextension</th>
 								<th>filename</th>
-								<th>owner</th>
+								<th>modifieddate</th>
 								<th>title</th>
+								<th>edit</th>
+								<th>remove</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -39,24 +41,24 @@
 								<td th:text="${document.document}"></td>
 								<td th:text="${document.fileextension}"></td>
 								<td th:text="${document.filename}"></td>
-								<td th:text="${document.owner}"></td>
+								<td th:text="${document.modifieddate.toString()}"></td>
 								<td th:text="${document.title}"></td>
+								<td><a th:href="@{/transactionhistory/edit/{id}(id=${th.transactionid})}"
+                                    class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                <td><a th:href="@{/transactionhistory/delete/{id}(id=${th.transactionid})}"
+                                    class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<p class="my-5">
-					<a href="" class="btn btn-primary"><i
-						class="fas fa-calendar-plus ml-2"></i></a>
-				</p>
 					<p class="my-5">
-					<a href="/addDocument" class="btn btn-primary"><i
+					<a href="/document/add" class="btn btn-primary"><i
 						class="fas fa-user-plus ml-2"></i></a>
 				</p>
 			</div>
 		</div>
 		<p>
-			<a href="/user/user.html"><i class="fas fa-home ml-2"></i> Go back to main</a>
+			<a href="/operator/operator.html"><i class="fas fa-home ml-2"></i> Go back to main</a>
 		</p>
 	</div>
 </body>

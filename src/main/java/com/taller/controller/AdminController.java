@@ -78,7 +78,6 @@ public class AdminController {
 			return "redirect:/product";
 		}
 		if(bindingResult.hasErrors()) {
-			System.out.println("entre");
 			model.addAttribute("product", new Product());
 			model.addAttribute("productcategories", pcs.findAll());
 			model.addAttribute("productsubcategories", pscs.findAll());
