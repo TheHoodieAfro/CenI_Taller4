@@ -6,6 +6,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -29,6 +31,7 @@ public class Transactionhistory implements Serializable {
 	private BigDecimal actualcost;
 
 	@PastOrPresent
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate modifieddate;
 
 	@Min(value = 1)
@@ -39,6 +42,7 @@ public class Transactionhistory implements Serializable {
 	private Integer referenceorderlineid;
 
 	@PastOrPresent
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate transactiondate;
 
 	private String transactiontype;

@@ -45,13 +45,13 @@ public class Productvendor implements Serializable {
 	//bi-directional many-to-one association to Vendor
 	@NotNull
 	@ManyToOne
-	@JoinColumn(insertable= false, updatable = false, name="businessentityid")
+	@JoinColumn(name="businessentityid")
 	private Vendor vendor;
 	
 	//bi-directional many-to-one association to Vendor
 	@NotNull
 	@ManyToOne
-	@JoinColumn(insertable= false, updatable = false, name="productid")
+	@JoinColumn(name="productid")
 	private Product product;
 
 	public Productvendor() {

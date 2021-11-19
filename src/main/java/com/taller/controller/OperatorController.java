@@ -85,7 +85,7 @@ public class OperatorController {
 	}
 	
 	@PostMapping("/transactionhistory/add")
-	public String saveTransactionHistory(@Validated Transactionhistory transactionhistory, BindingResult bindingResult, Model model, @RequestParam(value = "action", required = true) String action) {
+	public String saveTransactionHistory(Transactionhistory transactionhistory, BindingResult bindingResult, Model model, @RequestParam(value = "action", required = true) String action) {
 		if (action.equals("Cancel")) {
 			return "redirect:/transactionhistory";
 		}
