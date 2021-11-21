@@ -54,4 +54,17 @@ public class ProductServiceImp implements ProductService {
 		pr.deleteById(prod.getProductid());
 	}
 
+	public void update(Product p) {
+		Product mp = pr.findById(p.getProductid()).get();
+		
+		mp.setDaystomanufacture(p.getDaystomanufacture());
+		mp.setName(p.getName());
+		mp.setProductnumber(p.getProductnumber());
+		mp.setProductsubcategory(pscr.findById(p.getProductsubcategory().getProductsubcategoryid()).get());
+		mp.setUnitmeasure1(umr.findById(p.getUnitmeasure1().getUnitmeasurecode()).get());
+		mp.setUnitmeasure2(umr.findById(p.getUnitmeasure2().getUnitmeasurecode()).get());
+		
+		pr.save(mp);
+	}
+
 }

@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.taller.model.Document;
 import com.taller.model.Product;
+import com.taller.model.Productvendor;
 import com.taller.model.Transactionhistory;
 import com.taller.model.Vendor;
+import com.taller.model.info;
 import com.taller.service.implementations.DocumentServiceImp;
 import com.taller.service.implementations.ProductServiceImp;
 import com.taller.service.implementations.TransactionhistoryServiceImp;
@@ -101,7 +103,35 @@ public class OperatorController {
 	}
 	
 	//------------------------------------------------------- Edit -------------------------------------------------------
+	@GetMapping("/transactionhistory/edit/{id}")
+	public String editTransactionHistory(@PathVariable("id") Integer id, Model model) {
+		Transactionhistory th = ths.findById(id).get();
+		if (th == null)
+			throw new IllegalArgumentException("Invalid transaction history Id:" + id);
+		
+		model.addAttribute("transactionhistory", th);
+		model.addAttribute("products", ps.findAll());
+		return "operator/editTransactionhistory";
+	}
 	
+	@PostMapping("/transactionhistory/edit/{id}")
+	public String updateTransactionHistory(@PathVariable("id") Integer id, @Validated(info.class) Transactionhistory transactionhistory, BindingResult bindingResult, Model model, @RequestParam(value = "action", required = true) String action) {
+		if (action.equals("Cancel")) {
+			return "redirect:/transactionhistory";
+		}
+		if(bindingResult.hasErrors()) {
+			Transactionhistory th = ths.findById(id).get();
+			if (th == null)
+				throw new IllegalArgumentException("Invalid transaction history Id:" + id);
+			
+			model.addAttribute("transactionhistory", th);
+			model.addAttribute("products", ps.findAll());
+			return "operator/editTransactionhistory";
+		}
+		transactionhistory.setTransactionid(id);
+		ths.update(transactionhistory);
+		return "redirect:/transactionhistory";
+	}
 	
 	//------------------------------------------------------- Edit -------------------------------------------------------
 	@GetMapping("/document/delete/{id}")

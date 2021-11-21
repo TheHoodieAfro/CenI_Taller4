@@ -58,4 +58,16 @@ public class ProductvendorServiceImp implements ProductvendorService{
 		pvr.deleteById(productvendor.getId());
 	}
 
+	public void update(Productvendor pv) {
+		Productvendor mpv = pvr.findById(pv.getId()).get();
+		
+		mpv.setMaxorderqty(pv.getMaxorderqty());
+		mpv.setMinorderqty(pv.getMinorderqty());
+		mpv.setStandardprice(pv.getStandardprice());
+		mpv.setVendor(vr.findById(pv.getVendor().getBusinessentityid()).get());
+		mpv.setProduct(pr.findById(pv.getProduct().getProductid()).get());
+		
+		pvr.save(mpv);
+	}
+
 }
