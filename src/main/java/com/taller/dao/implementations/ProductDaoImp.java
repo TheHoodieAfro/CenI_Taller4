@@ -108,4 +108,16 @@ public class ProductDaoImp implements ProductDao {
         return q.getResultList();
 	}
 
+	@Override
+	public List<Product> findAllByTransactionhistoryBetweenDatesOrderedByProductName(LocalDate date1, LocalDate date2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Product> findAllByAtLeastTwoDocuments() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

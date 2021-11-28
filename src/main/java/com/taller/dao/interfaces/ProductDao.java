@@ -21,4 +21,8 @@ public interface ProductDao {
 	
 	List<Product> findAllByEndDate(LocalDate date);
 	
+	List<Product> findAllByTransactionhistoryBetweenDatesOrderedByProductName(LocalDate date1, LocalDate date2);
+	
+	List<Product> findAllByAtLeastTwoDocuments();
+	
 }
