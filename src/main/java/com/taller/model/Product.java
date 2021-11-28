@@ -20,6 +20,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * The persistent class for the product database table.
  *
@@ -64,9 +66,11 @@ public class Product implements Serializable {
 	private Integer rowguid;
 
 	private Integer safetystocklevel;
-
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate sellenddate;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate sellstartdate;
 
 	private String size;

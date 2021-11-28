@@ -76,6 +76,7 @@ public class ProductDaoImp implements ProductDao {
 
 	@Override
 	@Transactional
+	@SuppressWarnings("unchecked")
 	public List<Product> findAll() {
 		EntityManager em = emf.createEntityManager();
 		Query q = em.createQuery("SELECT p FROM Product p");
@@ -85,22 +86,26 @@ public class ProductDaoImp implements ProductDao {
 	@Override
 	@Transactional
 	public Product findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emf.createEntityManager();
+		return em.find(Product.class, id);
 	}
 
 	@Override
 	@Transactional
+	@SuppressWarnings("unchecked")
 	public List<Product> findAllByStartDate(LocalDate date) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("SELECT p FROM Product p WHERE sellstartdate = \'"+ date +"\'");
+        return q.getResultList();
 	}
 
 	@Override
 	@Transactional
+	@SuppressWarnings("unchecked")
 	public List<Product> findAllByEndDate(LocalDate date) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("SELECT p FROM Product p WHERE sellenddate = \'"+ date +"\'");
+        return q.getResultList();
 	}
 
 }
