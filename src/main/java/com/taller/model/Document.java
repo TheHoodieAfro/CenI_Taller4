@@ -1,7 +1,6 @@
 package com.taller.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -14,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * The persistent class for the document database table.
@@ -35,15 +36,16 @@ public class Document implements Serializable {
 
 	private String documentsummary;
 
-	@Size(min = 3)
+	@Size(min = 3, groups = info.class)
 	private String fileextension;
 
-	@Size(min = 4)
+	@Size(min = 4, groups = info.class)
 	private String filename;
 
 	private String folderflag;
-
-	@PastOrPresent
+	
+	@PastOrPresent(groups = info.class)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate modifieddate;
 
 	private Integer owner;

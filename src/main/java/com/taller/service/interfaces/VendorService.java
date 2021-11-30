@@ -4,7 +4,7 @@ import com.taller.model.Product;
 import com.taller.model.Vendor;
 
 public interface VendorService {
-	public Vendor save(Vendor prod);
+	public void save(Vendor prod);
 	
-	public Vendor edit(Vendor prod);
+	public void edit(Vendor prod);
 }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Documentos</title>
+<title>Documents</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -30,9 +30,6 @@
 								<th>filename</th>
 								<th>modifieddate</th>
 								<th>title</th>
-								<th>Visit products</th>
-								<th>edit</th>
-								<th>remove</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -42,28 +39,11 @@
 								<td th:text="${document.filename}"></td>
 								<td th:text="${document.modifieddate.toString()}"></td>
 								<td th:text="${document.title}"></td>
-								<td><a th:href="@{/document/{id}(id=${document.documentnode})}"
-                                    class="btn btn-primary"><i class="far fa-address-card"></i></a></td>
-								<td><a th:href="@{/document/edit/{id}(id=${document.documentnode})}"
-                                    class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
-                                <td><a th:href="@{/document/delete/{id}(id=${document.documentnode})}"
-                                    class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-					<p class="my-5">
-					<a href="/document/add" class="btn btn-primary"><i
-						class="fas fa-user-plus ml-2"></i></a>
-				</p>
 			</div>
-		</div>
-		<p>
-			<a href="/productdocument/add"><i class="far fa-broadcast-tower	"></i> Connect product and document </a>
-		</p>
-		<p>
-			<a href="/operator/operator.html"><i class="fas fa-home ml-2"></i> Go back to main</a>
-		</p>
 	</div>
 </body>
 </html>

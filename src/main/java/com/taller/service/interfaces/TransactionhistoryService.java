@@ -4,7 +4,7 @@ import com.taller.model.Transactionhistory;
 import com.taller.model.Unitmeasure;
 
 public interface TransactionhistoryService {
-	public Transactionhistory save(Transactionhistory prod);
+	public void save(Transactionhistory prod);
 	
-	public Transactionhistory edit(Transactionhistory prod);
+	public void edit(Transactionhistory prod);
 }

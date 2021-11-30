@@ -3,21 +3,17 @@ package com.taller.service.implementations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.taller.model.Product;
+import com.taller.dao.implementations.VendorDaoImp;
 import com.taller.model.Vendor;
-import com.taller.repository.interfaces.ProductRepository;
-import com.taller.repository.interfaces.VendorRepository;
-import com.taller.service.interfaces.ProductService;
-import com.taller.service.interfaces.ProductvendorService;
 import com.taller.service.interfaces.VendorService;
 
 @Service
 public class VendorServiceImp implements VendorService{
 
-	private VendorRepository vr;
+	private VendorDaoImp vr;
 
 	@Autowired
-	public VendorServiceImp(VendorRepository vr) {
+	public VendorServiceImp(VendorDaoImp vr) {
 		this.vr = vr;
 	}
 	
@@ -26,15 +22,13 @@ public class VendorServiceImp implements VendorService{
 	}
 	
 	@Override
-	public Vendor save(Vendor vendor) {
-		// TODO Auto-generated method stub
-		return vr.save(vendor);
+	public void save(Vendor vendor) {
+		vr.save(vendor);
 	}
 
 	@Override
-	public Vendor edit(Vendor vendor) {
-		// TODO Auto-generated method stub
-		return null;
+	public void edit(Vendor vendor) {
+		vr.update(vendor);
 	}
 
 }

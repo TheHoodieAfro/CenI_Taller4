@@ -20,7 +20,7 @@
 		<h2 class="mb-5">Crear documento</h2>
 		<div class="row">
 			<div class="col-md-6">
-				<form action="#" th:action="@{/document/add}" th:object="${document}"
+				<form action="#" th:action="@{/document/edit/{id}(id=${document.documentnode})}" th:object="${document}"
 					method="post">
 					<div class="row">
 					
