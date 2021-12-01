@@ -11,6 +11,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import com.taller.dao.implementations.DocumentDaoImp;
+import com.taller.dao.implementations.ProductDaoImp;
+import com.taller.dao.implementations.TransactionhistoryDaoImp;
 import com.taller.model.Document;
 import com.taller.model.Product;
 import com.taller.model.Productcategory;
@@ -18,11 +21,8 @@ import com.taller.model.Productsubcategory;
 import com.taller.model.Transactionhistory;
 import com.taller.model.Unitmeasure;
 import com.taller.model.Vendor;
-import com.taller.repository.interfaces.DocumentRepository;
-import com.taller.repository.interfaces.ProductRepository;
 import com.taller.repository.interfaces.ProductcategoryRepository;
 import com.taller.repository.interfaces.ProductsubcategoryRepository;
-import com.taller.repository.interfaces.TransactionhistoryRepository;
 import com.taller.repository.interfaces.UnitmeasureRepository;
 import com.taller.repository.interfaces.VendorRepository;
 
@@ -37,7 +37,7 @@ public class Taller1Application {
 	}
 	
 	@Bean
-	public CommandLineRunner add(DocumentRepository dr, TransactionhistoryRepository thr, ProductcategoryRepository pcr, ProductsubcategoryRepository pscr, UnitmeasureRepository umr, VendorRepository vr, ProductRepository pr) {
+	public CommandLineRunner add(DocumentDaoImp dr, TransactionhistoryDaoImp thr, ProductcategoryRepository pcr, ProductsubcategoryRepository pscr, UnitmeasureRepository umr, VendorRepository vr, ProductDaoImp pr) {
 		return (args) -> {
 			Productcategory pc1 = new Productcategory();
 			pc1.setName("Comida");

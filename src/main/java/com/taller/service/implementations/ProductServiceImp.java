@@ -6,10 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.taller.dao.implementations.DocumentDaoImp;
 import com.taller.dao.implementations.ProductDaoImp;
+import com.taller.dao.implementations.TransactionhistoryDaoImp;
 import com.taller.model.Document;
 import com.taller.model.Product;
 import com.taller.model.Productdocument;
+import com.taller.model.Transactionhistory;
+import com.taller.repository.interfaces.ProductdocumentRepository;
 import com.taller.repository.interfaces.ProductsubcategoryRepository;
 import com.taller.repository.interfaces.UnitmeasureRepository;
 import com.taller.service.interfaces.ProductService;
@@ -19,15 +23,24 @@ public class ProductServiceImp implements ProductService {
 
 	private ProductDaoImp pr;
 	
+	private TransactionhistoryDaoImp thr;
+	
+	private DocumentDaoImp dr;
+	
 	private UnitmeasureRepository umr;
 	
 	private ProductsubcategoryRepository pscr;
 	
+	private ProductdocumentRepository pdr;
+	
 	@Autowired
-	public ProductServiceImp(ProductDaoImp pr, UnitmeasureRepository umr, ProductsubcategoryRepository pscr) {
+	public ProductServiceImp(ProductdocumentRepository pdr, DocumentDaoImp dr, TransactionhistoryDaoImp thr, ProductDaoImp pr, UnitmeasureRepository umr, ProductsubcategoryRepository pscr) {
 		this.pr = pr;
 		this.umr = umr;
 		this.pscr = pscr;
+		this.thr = thr;
+		this.dr = dr;
+		this.pdr = pdr;
 	}
 	
 	public Iterable<Product> findAll() {
@@ -65,6 +78,24 @@ public class ProductServiceImp implements ProductService {
 	}
 	
 	public void delete(Product prod) {
+		List<Transactionhistory> ths = prod.getTransactionhistories();
+		if(!ths.isEmpty()) {
+			for(Transactionhistory th : ths) {
+				thr.delete(th.getTransactionid());
+			}
+		}
+		
+		List<Productdocument> pds = prod.getProductdocuments();
+		if(!pds.isEmpty()) {
+			for(Productdocument pd : pds) {
+				Document d = dr.findById(pd.getDocument().getDocumentnode());
+				d.removeProductdocument(pd);
+				dr.save(d);
+				
+				pdr.deleteById(pd.getId());
+			}
+		}
+		
 		pr.delete(prod.getProductid());
 	}
 

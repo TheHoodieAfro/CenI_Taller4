@@ -85,7 +85,7 @@ public class ProductController {
 		//------------------------------------------------------- Edit -------------------------------------------------------
 		@GetMapping("/product/edit/{id}")
 		public String editProduct(@PathVariable("id") Integer id, Model model) {
-			Product p = ps.findById(id).get();
+			Product p = ps.findById(id);
 			if (p == null)
 				throw new IllegalArgumentException("Invalid product Id:" + id);
 			
@@ -101,7 +101,7 @@ public class ProductController {
 				return "redirect:/product";
 			}
 			if(bindingResult.hasErrors()) {
-				Product p = ps.findById(id).get();
+				Product p = ps.findById(id);
 				if (p == null)
 					throw new IllegalArgumentException("Invalid product Id:" + id);
 				
@@ -118,12 +118,12 @@ public class ProductController {
 		//------------------------------------------------------- Delete -------------------------------------------------------
 		@GetMapping("/product/delete/{id}")
 		public String deleteProduct(@PathVariable("id") Integer id, Model model) {
-			Optional<Product> product = ps.findById(id);
-			if (product.isEmpty())
+			Product product = ps.findById(id);
+			if (product == null)
 				throw new IllegalArgumentException("Invalid product Id:" + id);
 			
 			
-			ps.delete(product.get());
+			ps.delete(product);
 			return "redirect:/product";
 		}
 		

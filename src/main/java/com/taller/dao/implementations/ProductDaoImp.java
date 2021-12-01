@@ -113,6 +113,7 @@ public class ProductDaoImp implements ProductDao {
 	}
 
 	@Override
+	@Transactional
 	@SuppressWarnings("unchecked")
 	public List<Product> findAllByTransactionhistoryBetweenDatesOrderedByProductName(LocalDate date1, LocalDate date2) {
 		EntityManager em = emf.createEntityManager();
@@ -121,6 +122,7 @@ public class ProductDaoImp implements ProductDao {
 	}
 
 	@Override
+	@Transactional
 	@SuppressWarnings("unchecked")
 	public List<Product> findAllByAtLeastTwoDocuments() {
 		EntityManager em = emf.createEntityManager();

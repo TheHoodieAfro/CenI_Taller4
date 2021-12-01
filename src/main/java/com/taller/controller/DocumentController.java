@@ -1,7 +1,5 @@
 package com.taller.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.taller.model.Document;
-import com.taller.model.Product;
-import com.taller.model.Transactionhistory;
 import com.taller.model.info;
 import com.taller.service.implementations.DocumentServiceImp;
 import com.taller.service.implementations.ProductServiceImp;
@@ -77,7 +73,7 @@ public class DocumentController {
 		//------------------------------------------------------- Edit -------------------------------------------------------
 		@GetMapping("/document/edit/{id}")
 		public String editDocument(@PathVariable("id") Integer id, Model model) {
-			Document p = ds.findById(id).get();
+			Document p = ds.findById(id);
 			if (p == null)
 				throw new IllegalArgumentException("Invalid Document Id:" + id);
 			
@@ -91,7 +87,7 @@ public class DocumentController {
 				return "redirect:/document";
 			}
 			if(bindingResult.hasErrors()) {
-				Document p = ds.findById(id).get();
+				Document p = ds.findById(id);
 				if (p == null)
 					throw new IllegalArgumentException("Invalid Document Id:" + id);
 				
@@ -106,12 +102,12 @@ public class DocumentController {
 		//------------------------------------------------------- Delete -------------------------------------------------------
 		@GetMapping("/document/delete/{id}")
 		public String deleteDocument(@PathVariable("id") Integer id, Model model) {
-			Optional<Document> document = ds.findById(id);
-			if (document.isEmpty())
+			Document document = ds.findById(id);
+			if (document == null)
 				throw new IllegalArgumentException("Invalid document Id:" + id);
 			
 			
-			ds.delete(document.get());
+			ds.delete(document);
 			return "redirect:/document";
 		}
 

@@ -87,7 +87,7 @@ public class TransactionhistoryController {
 				return "redirect:/transactionhistory";
 			}
 			if(bindingResult.hasErrors()) {
-				Transactionhistory th = ths.findById(id).get();
+				Transactionhistory th = ths.findById(id);
 				if (th == null)
 					throw new IllegalArgumentException("Invalid transaction history Id:" + id);
 				
@@ -103,12 +103,12 @@ public class TransactionhistoryController {
 		//------------------------------------------------------- Delete -------------------------------------------------------
 		@GetMapping("/transactionhistory/delete/{id}")
 		public String deleteTransactionhistory(@PathVariable("id") Integer id, Model model) {
-			Optional<Transactionhistory> transactionhistory = ths.findById(id);
-			if (transactionhistory.isEmpty())
+			Transactionhistory transactionhistory = ths.findById(id);
+			if (transactionhistory == null)
 				throw new IllegalArgumentException("Invalid transaction history Id:" + id);
 			
 			
-			ths.delete(transactionhistory.get());
+			ths.delete(transactionhistory);
 			return "redirect:/transactionhistory";
 		}
 		
