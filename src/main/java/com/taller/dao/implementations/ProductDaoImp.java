@@ -95,7 +95,9 @@ public class ProductDaoImp implements ProductDao {
 	@SuppressWarnings("unchecked")
 	public List<Product> findAllByStartDate(LocalDate date) {
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("SELECT p FROM Product p WHERE sellstartdate = \'"+ date +"\'");
+		//Query q = em.createQuery("SELECT p FROM Product p WHERE sellstartdate = \'"+ date +"\'");
+		Query q = em.createQuery("SELECT p FROM Product p WHERE sellstartdate = :date");
+		q.setParameter("date", date);
         return q.getResultList();
 	}
 
@@ -104,20 +106,26 @@ public class ProductDaoImp implements ProductDao {
 	@SuppressWarnings("unchecked")
 	public List<Product> findAllByEndDate(LocalDate date) {
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("SELECT p FROM Product p WHERE sellenddate = \'"+ date +"\'");
+		//Query q = em.createQuery("SELECT p FROM Product p WHERE sellenddate = \'"+ date +"\'");
+		Query q = em.createQuery("SELECT p FROM Product p WHERE sellenddate = :date");
+		q.setParameter("date", date);
         return q.getResultList();
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<Product> findAllByTransactionhistoryBetweenDatesOrderedByProductName(LocalDate date1, LocalDate date2) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("SELECT p FROM Product p JOIN p.transactionhistories ths ON ths.transactiondate BETWEEN :date1 AND :date2 WHERE p.transactionhistories IS NOT EMPTY ORDER BY p.name ASC");
+        return q.getResultList();
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<Product> findAllByAtLeastTwoDocuments() {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("SELECT p FROM Product p WHERE SIZE(p.productdocuments) > 1");
+        return q.getResultList();
 	}
 
 }

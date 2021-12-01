@@ -78,7 +78,7 @@ public class VendorDaoImp implements VendorDao {
 	@SuppressWarnings("unchecked")
 	public List<Vendor> findAll() {
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("SELECT p FROM Vendor p");
+		Query q = em.createQuery("SELECT v FROM Vendor v");
         return q.getResultList();
 	}
 

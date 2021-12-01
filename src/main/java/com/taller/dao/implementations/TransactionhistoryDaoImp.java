@@ -79,7 +79,7 @@ public class TransactionhistoryDaoImp implements TransactionhistoryDao {
 	@SuppressWarnings("unchecked")
 	public List<Transactionhistory> findAll() {
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("SELECT p FROM Transactionhistory p");
+		Query q = em.createQuery("SELECT th FROM Transactionhistory th");
         return q.getResultList();
 	}
 
@@ -96,7 +96,7 @@ public class TransactionhistoryDaoImp implements TransactionhistoryDao {
 	@SuppressWarnings("unchecked")
 	public List<Transactionhistory> findAllByProduct(Product product) {
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("SELECT p FROM Transactionhistory p WHERE ");
+		Query q = em.createQuery("SELECT th FROM Transactionhistory th WHERE th.product.productid = "+ product.getProductid());
         return q.getResultList();
 	}
 

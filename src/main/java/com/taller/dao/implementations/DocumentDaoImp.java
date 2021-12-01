@@ -78,7 +78,7 @@ public class DocumentDaoImp implements DocumentDao {
 	@SuppressWarnings("unchecked")
 	public List<Document> findAll() {
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("SELECT p FROM Document p");
+		Query q = em.createQuery("SELECT d FROM Document d");
         return q.getResultList();
 	}
 
